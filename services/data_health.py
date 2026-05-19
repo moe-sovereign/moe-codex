@@ -133,6 +133,12 @@ async def record_event(redis_client, *,
         logger.debug("data_health record_event failed: %s", exc)
 
 
+async def get_recent_events(limit: int = 50) -> List[Dict[str, Any]]:
+    """Convenience wrapper: reads recent events using the global state.redis_client."""
+    from state import redis_client as _rc
+    return await recent_events(_rc, limit=limit)
+
+
 async def recent_events(redis_client, *, limit: int = 50) -> List[Dict[str, Any]]:
     """Read the most recent drift events (newest first)."""
     if redis_client is None:

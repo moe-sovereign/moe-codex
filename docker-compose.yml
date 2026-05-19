@@ -419,8 +419,8 @@ services:
       JWT_SECRET:             "${BUDIBASE_JWT_SECRET:-change-me-budibase-jwt}"
       ENCRYPTION_KEY:         "${BUDIBASE_ENCRYPTION_KEY:-change-me-encrypt}"
       SELF_HOSTED:            "1"
-      REDIS_URL:              "redis://moe-budibase-redis:6379"
-      REDIS_PASSWORD:         ""
+      REDIS_URL:              "redis://:${BUDIBASE_REDIS_PASSWORD:-budibase-redis-pw}@moe-budibase-redis:6379"
+      REDIS_PASSWORD:         "${BUDIBASE_REDIS_PASSWORD:-budibase-redis-pw}"
     ports:
       - "${BUDIBASE_HOST_PORT:-10000}:80"
     depends_on:
@@ -439,6 +439,7 @@ services:
   moe-budibase-redis:
     image: redis:7-alpine
     container_name: moe-budibase-redis
+    command: redis-server --requirepass "${BUDIBASE_REDIS_PASSWORD:-budibase-redis-pw}"
     networks:
       - moe_net
     restart: unless-stopped
