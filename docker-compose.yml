@@ -615,6 +615,9 @@ services:
       # Allow embedding in the Codex admin UI
       WTF_CSRF_ENABLED:        "false"
       TALISMAN_ENABLED:        "false"
+      SUPERSET_CONFIG_PATH:    "/app/pythonpath/superset_config.py"
+    volumes:
+      - ./superset_config.py:/app/pythonpath/superset_config.py:ro
     ports:
       - "${SUPERSET_HOST_PORT:-8889}:8088"
     depends_on:
