@@ -4,6 +4,18 @@ This page tracks how MoE Sovereign maps onto the Palantir product portfolio
 (Foundry · Gotham · AIP · Apollo). It is the canonical reference for product
 positioning, gap analysis, and roadmap discussions.
 
+> **Scope of the "Palantir alternative" claim.** MoE Sovereign positions itself
+> as an alternative to the Palantir **platform** — the data layer (Foundry), the
+> AI layer (AIP), the investigation layer (Gotham), and continuous delivery
+> (Apollo): ontology, typed datasets, ETL, lineage, versioning, governance, and
+> a sovereign multi-model backend. It is explicitly **not** a Gotham-style
+> real-time situational-awareness *frontend* (live globe with flight/satellite/
+> CCTV overlays). Browser-based OSINT map tools (e.g. OSIRIS / osirisai.live)
+> carry the same "open-source Palantir alternative" keyword but occupy the
+> opposite end of the portfolio — presentation over public feeds, with no data
+> integration, governance, or AI backend. The two are complementary, not
+> competing. Do not let the shared keyword blur the positioning.
+
 > **Maintenance contract.** This page must be updated whenever a Key Capability
 > is added in `README.md`, a new admin-UI surface ships, or a Foundry/AIP
 > module shifts category. See [Maintenance](#maintenance) at the bottom.
@@ -56,7 +68,7 @@ positioning, gap analysis, and roadmap discussions.
 | 2.1 | **Object/Link Explorer** | Investigative drilldown over persons/objects/relations | 🟢 `/explorer` (Cypher) + Neo4j Browser | Present, but no investigative UI workflow |
 | 2.2 | **Graph (Link Analysis)** | Visual link analysis of relationship networks | 🟢 Neo4j Browser (embedded) | **Erweiterbar** with Linkurious OSS, Cytoscape.js, Gephi |
 | 2.3 | **Timeline / Temporal Analysis** | Cross-object event timeline | 🟢 vis-timeline.js (D2) — unified event stream: Marquez runs + lakeFS commits + drift events | `/timeline` dashboard with 1d/7d/30d/90d window |
-| 2.4 | **Geospatial Investigation** | Map with live object overlay | 🟢 PostGIS + KeplerGL (D4) — layer browser, point-in-polygon, GeoJSON API | Ontology binding (object overlay) partial — geo tables need schema alignment |
+| 2.4 | **Geospatial Investigation** | Map with live object overlay | 🟢 PostGIS + KeplerGL (D4) — layer browser, point-in-polygon, GeoJSON API | Ontology binding (object overlay) partial — geo tables need schema alignment. **Live-feed adapter open** (ADS-B/OpenSky, AIS, USGS, NASA-FIRMS → GeoJSON layer API); infra already present via D4, only the streaming ingest is missing. This is the one substantive gap that browser OSINT maps (OSIRIS) make visible. |
 | 2.5 | **Document Intelligence** | OCR + entity extraction from PDFs/scans | 🟢 Existing bundle import pipeline + MCP tools | **Erweiterbar** with Unstructured.io, Apache Tika, ColPali, Tesseract |
 | 2.6 | **Helix (Entity Resolution)** | Duplicate resolution across data sources | ✅ Fuzzy entity deduplication (Ratcliff/Obershelp, Capability #28) | Fully covered |
 | 2.7 | **Dossier (Case File)** | Structured case file with live updates | 🟢 Dossier (D5) — investigation container with pinned evidence from all modules | `/dossier` — pin graph entities, timeline events, geo features, notes, alerts; Redis-backed |
@@ -106,9 +118,9 @@ positioning, gap analysis, and roadmap discussions.
 | **Energy** | BP, Shell, Edison — exploration, predictive maintenance, trading | 🟢 Multi-domain routing, time-series integration possible | SCADA integration, specialised time-series models |
 | **Banking / Insurance** | BNP Paribas, Credit Suisse — fraud, compliance, underwriting | 🟢 Causal learning, trust score, audit log via Kafka | KYC/AML schemas, regulatory audit trails |
 | **Government / Public Services** | UK NHS, US HHS, German agencies — case management, service desk | 🟢 Self-hosted, GDPR-compliant, multi-tenant | Forms builder, case-management UI |
-| **Crisis Response** | FEMA, COVID tracing — real-time situational awareness | 🟡 Kafka event streaming + Starfleet dashboard, **but** no geo layer | Geospatial stack, real-time map sync |
+| **Crisis Response** | FEMA, COVID tracing — real-time situational awareness | 🟡 Kafka event streaming + Starfleet dashboard, **but** no live geo layer | Geospatial stack present (D4); real-time map sync needs the live-feed adapter from row 2.4 |
 | **Supply Chain** | Airbus suppliers, pandemic vaccine logistics | 🟢 Knowledge graph for supplier relationships, NiFi for heterogeneous data integration | EDI/EDIFACT connectors, trade-compliance rules |
-| **Cybersecurity / SecOps** | Cyber-Mesh, SOAR workflows | 🟢 MCP tools, audit log, self-correction | SIEM integration (e.g. Wazuh), threat-intel feeds |
+| **Cybersecurity / SecOps** | Cyber-Mesh, SOAR workflows | 🟢 MCP tools, audit log, self-correction | SIEM integration (e.g. Wazuh), threat-intel feeds. **Active-recon tooling (port/vuln scans, Shodan, data-leak/phone lookups) is ⚪ out of scope by design** — offensive dual-use OSINT contradicts the DSGVO / EU-AI-Act / BSI-Grundschutz governance posture. Browser OSINT suites (OSIRIS) ship this; we deliberately do not. |
 | **Pharma / Drug Discovery** | Merck, Novartis — research knowledge graph | ✅ ChEMBL/PubChem MCP tools + knowledge graph + 7B ensemble | **Already deployable** — strength of the sovereign approach |
 | **Telecommunications** | Network operations, customer churn | 🟡 Trust-score system suitable | NetCDF/NetFlow adapter |
 | **Research & Science** | (Palantir rarely present here) | ✅ ORCID/PubMed/PubChem MCP tools + Federated Knowledge Sync | **Strength of the sovereign approach** |
