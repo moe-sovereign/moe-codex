@@ -55,7 +55,7 @@ logger = logging.getLogger("MOE-SOVEREIGN")
 # ---------------------------------------------------------------------------
 
 NAMESPACE      = "moe-sovereign"
-PRODUCER       = "https://github.com/h3rb3rn/moe-sovereign"
+PRODUCER       = "https://github.com/moe-sovereign/moe-sovereign"
 SCHEMA_URL     = "https://openlineage.io/spec/2-0-2/OpenLineage.json"
 EMIT_TIMEOUT   = 3.0  # seconds — never block the pipeline more than this
 

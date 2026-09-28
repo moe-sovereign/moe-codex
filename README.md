@@ -1,8 +1,8 @@
 # MoE Codex
 
-**EU-sovereign data and audit platform for [MoE Sovereign](https://github.com/h3rb3rn/moe-sovereign) — the open-source alternative to Palantir Foundry / Gotham / AIP.**
+**EU-sovereign data and audit platform for [MoE Sovereign](https://github.com/moe-sovereign/moe-sovereign) — the open-source alternative to Palantir Foundry / Gotham / AIP.**
 
-*Latin `codex` = manuscript collection, lawbook — thematic sibling of [moe-libris](https://github.com/h3rb3rn/moe-libris).*
+*Latin `codex` = manuscript collection, lawbook — thematic sibling of [moe-libris](https://github.com/moe-sovereign/moe-libris).*
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Docs](https://img.shields.io/badge/Docs-docs.moe--sovereign.org-informational.svg)](https://docs.moe-sovereign.org/)
@@ -45,7 +45,7 @@ Full feature-by-feature mapping: [`docs/system/palantir_comparison.md`](docs/sys
 ## Quick Start
 
 ```bash
-git clone https://github.com/h3rb3rn/moe-codex.git
+git clone https://github.com/moe-sovereign/moe-codex.git
 cd moe-codex
 cp .env.example .env
 # Edit: CODEX_NODE_ID, CODEX_ADMIN_KEY, SOVEREIGN_URL (for GraphRAG attachment)
@@ -139,6 +139,6 @@ The stack uses **exclusively OSI-approved open-source components** and follows t
 
 ## Related repositories
 
-- **[moe-sovereign](https://github.com/h3rb3rn/moe-sovereign)** — the MoE core (API gateway, 15 expert specialists, MCP precision tools, caching, GraphRAG basis)
-- **[moe-libris](https://github.com/h3rb3rn/moe-libris)** — federation hub for knowledge bundle exchange between sovereign instances
-- **[moe-codex](https://github.com/h3rb3rn/moe-codex)** — *this repository* — EU-Palantir alternative
+- **[moe-sovereign](https://github.com/moe-sovereign/moe-sovereign)** — the MoE core (API gateway, 15 expert specialists, MCP precision tools, caching, GraphRAG basis)
+- **[moe-libris](https://github.com/moe-sovereign/moe-libris)** — federation hub for knowledge bundle exchange between sovereign instances
+- **[moe-codex](https://github.com/moe-sovereign/moe-codex)** — *this repository* — EU-Palantir alternative
